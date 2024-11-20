@@ -17,7 +17,7 @@ const swaggerOptions = {
     },
     servers: [
       {
-        url: "http://localhost:3000",
+        url: "http://localhost:3001/api", // Updated with port 3001 and /api prefix
       },
     ],
     tags: [
@@ -37,6 +37,7 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
-app.use("/", routes);
+// Mount routes under /api prefix
+app.use("/api", routes);
 
 export default app;
